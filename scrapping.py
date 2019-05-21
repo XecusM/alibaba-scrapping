@@ -24,7 +24,7 @@ def ItemResults(item):
     # Find result items div
     containers = page.findAll('div',{'class':'item-info'})
     # intiate items dataframe
-    items = pd.DataFrame(columns=['item','link','price','min-order'])
+    items = pd.DataFrame(columns=['name','item','link','price','min-order'])
     # help counter for getting links
     counter = 0
     # get all details for every item result
@@ -33,7 +33,13 @@ def ItemResults(item):
         price = page.find('div',{'class':'price'})
         min_order = page.find('div',{'class':'min-order'})
         # Add item details to dataframe
-        items.loc[counter] = [re.sub('\s+',' ',link.text.strip()),
+        temp1 = re.sub('\s+',' ',link.text.strip())
+        temp2 = temp1.replace('  ',' ')
+        while not temp1 == temp2:
+            temp1 = temp1.replace('  ',' ').strip()
+            temp2 = temp1.replace('  ',' ').strip()
+        items.loc[counter] = [item['item'],
+                            temp1.strip(),
                             'https:{0}'.format(link['href']),
                             re.sub('\s+',' ',price.text.strip()),
                             re.sub('\s+',' ',min_order.text.strip())]

@@ -110,3 +110,6 @@ media/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+
+#Results file
+results.xlsx
