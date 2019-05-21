@@ -29,15 +29,20 @@ def ItemResults(item):
     counter = 0
     # get all details for every item result
     for con in containers:
+        # get all items names and links
         link = con.find('a')
+        # get items prices
         price = page.find('div',{'class':'price'})
+        # get items minimum order quantity
         min_order = page.find('div',{'class':'min-order'})
         # Add item details to dataframe
         temp1 = re.sub('\s+',' ',link.text.strip())
         temp2 = temp1.replace('  ',' ')
+        # remove extra spaces
         while not temp1 == temp2:
             temp1 = temp1.replace('  ',' ').strip()
             temp2 = temp1.replace('  ',' ').strip()
+        # add data to items DataFrame
         items.loc[counter] = [item['item'],
                             temp1.strip(),
                             'https:{0}'.format(link['href']),
@@ -45,6 +50,7 @@ def ItemResults(item):
                             re.sub('\s+',' ',min_order.text.strip())]
         # counter for the next link
         counter += 1
+        # check if scraped items reach the limit
         if counter >= item['number']:
             break
     return items
