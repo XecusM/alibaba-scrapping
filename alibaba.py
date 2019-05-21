@@ -3,8 +3,7 @@ import pandas as pd
 import scrapping
 
 def Items(items):
-    # intiate items dataframe
-    # Results = pd.DataFrame(columns=['name','item','link','price','min-order'])
+    # intiate results items dataframe
     Results = pd.DataFrame()
     for counter in range(len(items['Items'])):
         # print(items[counter])
@@ -22,7 +21,9 @@ def Items(items):
     return Results
 
 def main():
+    # Stopping variable
     check = True
+    # get csv name and check its validity
     while check:
         file = input('Please, enter file name .csv to scrap its list: ')
         try:
