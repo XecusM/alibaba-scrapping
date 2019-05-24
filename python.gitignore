@@ -1,0 +1,24 @@
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+.vscode
+
+# mypy
+.mypy_cache/
+
+.DS_Store
+*.sqlite3
