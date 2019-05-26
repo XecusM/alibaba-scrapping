@@ -22,8 +22,5 @@ venv/
 ENV/
 .vscode
 
-# mypy
-.mypy_cache/
-
-.DS_Store
-*.sqlite3
+#Results file
+results.xlsx
